@@ -1,3 +1,4 @@
+import 'package:chesstip/screens/history_screen.dart';
 import 'package:chesstip/screens/play_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: PlayScreen(),
+      home: HistoryScreen(),
     );
   }
 }
