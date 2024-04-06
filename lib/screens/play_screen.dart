@@ -15,7 +15,9 @@ class _PlayScreenState extends State<PlayScreen> {
     return Scaffold(
       body: Column(
         children: [
-          SizedBox(height: 50,),
+          SizedBox(
+            height: 50,
+          ),
           PlayComponent(),
         ],
       ),

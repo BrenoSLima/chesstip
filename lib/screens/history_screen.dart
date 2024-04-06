@@ -16,7 +16,9 @@ class _HistoryScreenState extends State<HistoryScreen> {
     return Scaffold(
       body: Column(
         children: [
-          SizedBox(height: 50,),
+          SizedBox(
+            height: 50,
+          ),
           WinHistoryComponent(),
           DefeatHistoryComponent()
         ],
