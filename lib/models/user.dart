@@ -5,6 +5,6 @@ class User {
   User(this.nome, this.saldo);
 
   String get consultaSaldo {
-    return "R$saldo";
+    return "R\$ $saldo";
   }
 }

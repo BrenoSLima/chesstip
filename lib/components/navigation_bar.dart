@@ -81,18 +81,6 @@ class _BottomNavigationState extends State<BottomNavigation> {
     );
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: appBar(),
-      body: IndexedStack(
-        index: currentIndex,
-        children: screens,
-      ),
-      bottomNavigationBar: bottomNavigation(),
-    );
-  }
-
   appBar() {
     return AppBar(
       leading: Padding(
@@ -118,6 +106,18 @@ class _BottomNavigationState extends State<BottomNavigation> {
           ),
         )
       ],
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: appBar(),
+      body: IndexedStack(
+        index: currentIndex,
+        children: screens,
+      ),
+      bottomNavigationBar: bottomNavigation(),
     );
   }
 }
