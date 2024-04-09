@@ -3,14 +3,10 @@ import 'dart:js_interop';
 class User {
   int id;
   String name;
-  double saldo;
+  double balance;
   User({
     required this.id,
     required this.name,
-    required this.saldo,
+    required this.balance,
   });
-
-  String get consultaSaldo {
-    return "R\$ $saldo";
-  }
 }
