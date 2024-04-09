@@ -66,28 +66,39 @@ class _PlayComponentState extends State<PlayComponent> {
                           fontWeight: FontWeight.w400,
                         ),
                       ),
-                      ToggleButtons(
-                        direction: Axis.horizontal,
-                        onPressed: (int index) {
-                          setState(() {
-                            // The button that is tapped is set to true, and the others to false.
-                            for (int i = 0; i < _selectedTime.length; i++) {
-                              _selectedTime[i] = i == index;
-                            }
-                          });
-                        },
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(8)),
-                        selectedBorderColor: const Color(0xff20661F),
-                        selectedColor: Colors.black,
-                        fillColor: const Color(0xff7BE079),
-                        color: Colors.black,
-                        constraints: const BoxConstraints(
-                          minHeight: 40.0,
-                          minWidth: 80.0,
-                        ),
-                        isSelected: _selectedTime,
-                        children: timers,
+                      Column(
+                        children: [
+                          Text(
+                            "Tempo",
+                            style: TextStyle(
+                              fontSize: 5,
+                              color: Colors.black38
+                            ),
+                          ),
+                          ToggleButtons(
+                            direction: Axis.horizontal,
+                            onPressed: (int index) {
+                              setState(() {
+                                // The button that is tapped is set to true, and the others to false.
+                                for (int i = 0; i < _selectedTime.length; i++) {
+                                  _selectedTime[i] = i == index;
+                                }
+                              });
+                            },
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(8)),
+                            selectedBorderColor: const Color(0xff20661F),
+                            selectedColor: Colors.black,
+                            fillColor: const Color(0xff7BE079),
+                            color: Colors.black,
+                            constraints: const BoxConstraints(
+                              minHeight: 40.0,
+                              minWidth: 80.0,
+                            ),
+                            isSelected: _selectedTime,
+                            children: timers,
+                          ),
+                        ],
                       ),
                       ToggleButtons(
                         direction: Axis.horizontal,
@@ -127,7 +138,7 @@ class _PlayComponentState extends State<PlayComponent> {
                   ),
                 ),
                 child: MaterialButton(
-                  onPressed: (){},
+                  onPressed: () {},
                   child: const Text(
                     "Jogar",
                     style: TextStyle(color: Colors.white, fontSize: 18),

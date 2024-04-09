@@ -1,12 +1,37 @@
+import 'package:chesstip/components/win_history_component.dart';
+import 'package:chesstip/repositories/match_repository.dart';
 import 'package:flutter/material.dart';
 
-class HistoryScreen extends StatelessWidget {
-  const HistoryScreen({super.key});
+import '../components/defeat_history_component.dart';
+
+class HistoryScreen extends StatefulWidget {
+  const HistoryScreen({Key? key}) : super(key: key);
 
   @override
+  State<HistoryScreen> createState() => _HistoryScreenState();
+}
+
+class _HistoryScreenState extends State<HistoryScreen> {
+  winMatch(match) {
+    return match.winnerId == 1;
+  }
+
+  final matches = MatchRepository.matches;
+  @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Text("Historico"),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Center(child: Text("Histórico de partidas")),
+      ),
+      body: ListView.builder(
+        itemBuilder: ((context, index) {
+          if (winMatch(matches[index]))
+            return WinHistoryComponent(match: matches[index]);
+          else
+            return DefeatHistoryComponent(match: matches[index]);
+        }),
+        itemCount: matches.length,
+      ),
     );
   }
 }

@@ -22,7 +22,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
   final screens = [
     const PlayScreen(),
     const HistoryScreen(),
-    const FriendsScreen(),
+    FriendsScreen(),
     const SettingsScreen(),
   ];
 
@@ -93,7 +93,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
       title: Padding(
         padding: const EdgeInsets.only(right: 1),
         child: Text(
-          pessoa.nome,
+          pessoa.name,
           style: TextStyle(fontSize: 25),
         ),
       ),
