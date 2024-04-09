@@ -1,9 +1,8 @@
-import 'package:chesstip/components/app_bar.dart';
+import 'package:chesstip/models/user.dart';
 import 'package:chesstip/screens/friends_screen.dart';
 import 'package:chesstip/screens/history_screen.dart';
 import 'package:chesstip/screens/play_screen.dart';
 import 'package:chesstip/screens/settings_screen.dart';
-import 'package:chesstip/components/app_bar.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavigation extends StatefulWidget {
@@ -14,6 +13,8 @@ class BottomNavigation extends StatefulWidget {
 }
 
 class _BottomNavigationState extends State<BottomNavigation> {
+  User pessoa = User("teste", 100.00);
+
   int currentIndex = 0;
   final double iconSize = 20;
   final double selectedFontSize = 12;
@@ -24,15 +25,6 @@ class _BottomNavigationState extends State<BottomNavigation> {
     const FriendsScreen(),
     const SettingsScreen(),
   ];
-
-  appBar() {
-    return AppBar(title: Text("ChessTip"), actions: <Widget>[
-      IconButton(
-        onPressed: () {},
-        icon: const Icon(Icons.account_box),
-      )
-    ]);
-  }
 
   bottomNavigation() {
     return BottomNavigationBar(
@@ -98,6 +90,34 @@ class _BottomNavigationState extends State<BottomNavigation> {
         children: screens,
       ),
       bottomNavigationBar: bottomNavigation(),
+    );
+  }
+
+  appBar() {
+    return AppBar(
+      leading: Padding(
+        padding: EdgeInsets.zero,
+        child: IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.account_circle),
+        ),
+      ),
+      title: Padding(
+        padding: const EdgeInsets.only(right: 1),
+        child: Text(
+          pessoa.nome,
+          style: TextStyle(fontSize: 25),
+        ),
+      ),
+      actions: [
+        Padding(
+          padding: const EdgeInsets.only(right: 50),
+          child: Text(
+            pessoa.consultaSaldo.toString(),
+            style: TextStyle(fontSize: 20),
+          ),
+        )
+      ],
     );
   }
 }
