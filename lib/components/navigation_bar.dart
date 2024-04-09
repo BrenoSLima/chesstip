@@ -1,3 +1,4 @@
+import 'package:chesstip/models/user.dart';
 import 'package:chesstip/screens/friends_screen.dart';
 import 'package:chesstip/screens/history_screen.dart';
 import 'package:chesstip/screens/play_screen.dart';
@@ -12,6 +13,8 @@ class BottomNavigation extends StatefulWidget {
 }
 
 class _BottomNavigationState extends State<BottomNavigation> {
+  User pessoa = User("teste", 100.00);
+
   int currentIndex = 0;
   final double iconSize = 20;
   final double selectedFontSize = 12;
@@ -78,9 +81,38 @@ class _BottomNavigationState extends State<BottomNavigation> {
     );
   }
 
+  appBar() {
+    return AppBar(
+      leading: Padding(
+        padding: EdgeInsets.zero,
+        child: IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.account_circle),
+        ),
+      ),
+      title: Padding(
+        padding: const EdgeInsets.only(right: 1),
+        child: Text(
+          pessoa.name,
+          style: TextStyle(fontSize: 25),
+        ),
+      ),
+      actions: [
+        Padding(
+          padding: const EdgeInsets.only(right: 50),
+          child: Text(
+            pessoa.consultaSaldo.toString(),
+            style: TextStyle(fontSize: 20),
+          ),
+        )
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: appBar(),
       body: IndexedStack(
         index: currentIndex,
         children: screens,
