@@ -19,7 +19,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
   final screens = [
     const PlayScreen(),
     const HistoryScreen(),
-    const FriendsScreen(),
+    FriendsScreen(),
     const SettingsScreen(),
   ];
 

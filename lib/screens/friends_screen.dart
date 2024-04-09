@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class FriendsScreen extends StatelessWidget {
   final friends = UserRepository.friends;
-  const FriendsScreen({super.key});
+  FriendsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
