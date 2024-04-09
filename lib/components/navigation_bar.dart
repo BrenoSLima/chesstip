@@ -1,9 +1,11 @@
 import 'package:chesstip/models/user.dart';
+import 'package:chesstip/repositories/user_repository.dart';
 import 'package:chesstip/screens/friends_screen.dart';
 import 'package:chesstip/screens/history_screen.dart';
 import 'package:chesstip/screens/play_screen.dart';
 import 'package:chesstip/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class BottomNavigation extends StatefulWidget {
   const BottomNavigation({super.key});
@@ -13,8 +15,8 @@ class BottomNavigation extends StatefulWidget {
 }
 
 class _BottomNavigationState extends State<BottomNavigation> {
-  User pessoa = User("teste", 100.00);
-
+  User user = UserRepository.user;
+  NumberFormat real = NumberFormat.currency(locale: "pt_BR", name: 'R\$');
   int currentIndex = 0;
   final double iconSize = 20;
   final double selectedFontSize = 12;
@@ -93,7 +95,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
       title: Padding(
         padding: const EdgeInsets.only(right: 1),
         child: Text(
-          pessoa.name,
+          user.name,
           style: TextStyle(fontSize: 25),
         ),
       ),
@@ -101,7 +103,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
         Padding(
           padding: const EdgeInsets.only(right: 50),
           child: Text(
-            pessoa.consultaSaldo.toString(),
+            real.format(user.balance),
             style: TextStyle(fontSize: 20),
           ),
         )
