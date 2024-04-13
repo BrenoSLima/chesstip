@@ -68,12 +68,10 @@ class _PlayComponentState extends State<PlayComponent> {
                       ),
                       Column(
                         children: [
-                          Text(
+                          const Text(
                             "Tempo",
-                            style: TextStyle(
-                              fontSize: 5,
-                              color: Colors.black38
-                            ),
+                            style:
+                                TextStyle(fontSize: 5, color: Colors.black38),
                           ),
                           ToggleButtons(
                             direction: Axis.horizontal,
