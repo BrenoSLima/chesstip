@@ -4,6 +4,7 @@ import 'package:chesstip/screens/friends_screen.dart';
 import 'package:chesstip/screens/history_screen.dart';
 import 'package:chesstip/screens/play_screen.dart';
 import 'package:chesstip/screens/settings_screen.dart';
+import 'package:chesstip/screens/user_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -24,9 +25,14 @@ class _BottomNavigationState extends State<BottomNavigation> {
   final screens = [
     const PlayScreen(),
     const HistoryScreen(),
-    FriendsScreen(),
+    const FriendsScreen(),
     const SettingsScreen(),
   ];
+
+  userDetail(User user) {
+    Navigator.push(context,
+        MaterialPageRoute(builder: (_) => UserDetailScreen(user: user)));
+  }
 
   bottomNavigation() {
     return BottomNavigationBar(
@@ -35,6 +41,8 @@ class _BottomNavigationState extends State<BottomNavigation> {
       onTap: (value) => setState(() => currentIndex = value),
       selectedFontSize: selectedFontSize,
       unselectedFontSize: unselectedFontSize,
+      showUnselectedLabels: false,
+      selectedItemColor: Colors.green,
       items: [
         BottomNavigationBarItem(
             icon: SizedBox(
@@ -46,27 +54,38 @@ class _BottomNavigationState extends State<BottomNavigation> {
             activeIcon: SizedBox(
                 width: iconSize,
                 child: Image.asset(
+                  color: Colors.green,
                   "assets/icons/chess-black.png",
                 )),
             label: "Jogar"),
         BottomNavigationBarItem(
             icon: SizedBox(
               width: iconSize,
-              child: Image.asset("assets/icons/historical-white.png"),
+              child: Image.asset(
+                "assets/icons/historical-white.png",
+              ),
             ),
             activeIcon: SizedBox(
               width: iconSize,
-              child: Image.asset("assets/icons/historical-black.png"),
+              child: Image.asset(
+                color: Colors.green,
+                "assets/icons/historical-black.png",
+              ),
             ),
             label: "Histórico"),
         BottomNavigationBarItem(
             icon: SizedBox(
               width: iconSize,
-              child: Image.asset("assets/icons/friends-white.png"),
+              child: Image.asset(
+                "assets/icons/friends-white.png",
+              ),
             ),
             activeIcon: SizedBox(
               width: iconSize,
-              child: Image.asset("assets/icons/friends-black.png"),
+              child: Image.asset(
+                color: Colors.green,
+                "assets/icons/friends-black.png",
+              ),
             ),
             label: "Amigos"),
         BottomNavigationBarItem(
@@ -76,7 +95,10 @@ class _BottomNavigationState extends State<BottomNavigation> {
             ),
             activeIcon: SizedBox(
               width: iconSize,
-              child: Image.asset("assets/icons/gear-black.png"),
+              child: Image.asset(
+                color: Colors.green,
+                "assets/icons/gear-black.png",
+              ),
             ),
             label: "Configurações")
       ],
@@ -88,7 +110,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
       leading: Padding(
         padding: EdgeInsets.zero,
         child: IconButton(
-          onPressed: () {},
+          onPressed: () => userDetail(user),
           icon: const Icon(Icons.account_circle),
         ),
       ),
@@ -96,7 +118,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
         padding: const EdgeInsets.only(right: 1),
         child: Text(
           user.name,
-          style: TextStyle(fontSize: 25),
+          style: const TextStyle(fontSize: 25),
         ),
       ),
       actions: [
@@ -104,7 +126,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
           padding: const EdgeInsets.only(right: 50),
           child: Text(
             real.format(user.balance),
-            style: TextStyle(fontSize: 20),
+            style: const TextStyle(fontSize: 20),
           ),
         )
       ],
