@@ -43,7 +43,6 @@ class _PlayComponentState extends State<PlayComponent> {
             children: [
               Container(
                 width: double.infinity,
-                height: 200,
                 decoration: const BoxDecoration(
                   color: Color(0xffF7FFF8),
                   borderRadius: BorderRadius.only(
@@ -68,10 +67,15 @@ class _PlayComponentState extends State<PlayComponent> {
                       ),
                       Column(
                         children: [
-                          const Text(
-                            "Tempo",
-                            style:
-                                TextStyle(fontSize: 5, color: Colors.black38),
+                          const Padding(
+                            padding: EdgeInsets.only(top: 10, bottom: 5),
+                            child: Text(
+                              "Tempo",
+                              style: TextStyle(
+                                fontSize: 13,
+                                color: Colors.black54
+                              ),
+                            ),
                           ),
                           ToggleButtons(
                             direction: Axis.horizontal,
@@ -98,28 +102,42 @@ class _PlayComponentState extends State<PlayComponent> {
                           ),
                         ],
                       ),
-                      ToggleButtons(
-                        direction: Axis.horizontal,
-                        onPressed: (int index) {
-                          setState(() {
-                            // The button that is tapped is set to true, and the others to false.
-                            for (int i = 0; i < _selectedMoney.length; i++) {
-                              _selectedMoney[i] = i == index;
-                            }
-                          });
-                        },
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(8)),
-                        selectedBorderColor: const Color(0xff20661F),
-                        selectedColor: Colors.black,
-                        fillColor: const Color(0xff7BE079),
-                        color: Colors.black,
-                        constraints: const BoxConstraints(
-                          minHeight: 40.0,
-                          minWidth: 80.0,
-                        ),
-                        isSelected: _selectedMoney,
-                        children: money,
+                      Column(
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.all(5.0),
+                            child: Text(
+                              "Valor",
+                              style: TextStyle(
+                                  fontSize: 13,
+                                  color: Colors.black54
+                              ),
+                            ),
+                          ),
+                          ToggleButtons(
+                            direction: Axis.horizontal,
+                            onPressed: (int index) {
+                              setState(() {
+                                // The button that is tapped is set to true, and the others to false.
+                                for (int i = 0; i < _selectedMoney.length; i++) {
+                                  _selectedMoney[i] = i == index;
+                                }
+                              });
+                            },
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(8)),
+                            selectedBorderColor: const Color(0xff20661F),
+                            selectedColor: Colors.black,
+                            fillColor: const Color(0xff7BE079),
+                            color: Colors.black,
+                            constraints: const BoxConstraints(
+                              minHeight: 40.0,
+                              minWidth: 80.0,
+                            ),
+                            isSelected: _selectedMoney,
+                            children: money,
+                          ),
+                        ],
                       ),
                     ],
                   ),
