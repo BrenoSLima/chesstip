@@ -29,12 +29,8 @@ class _BottomNavigationState extends State<BottomNavigation> {
     const SettingsScreen(),
   ];
 
-  userDetail(User user) {
-    Navigator.push(context,
-        MaterialPageRoute(builder: (_) => UserDetailScreen(user: user)));
-  }
-
-  bottomNavigation() {
+  @override
+  Widget build(BuildContext context) {
     return BottomNavigationBar(
       currentIndex: currentIndex,
       type: BottomNavigationBarType.fixed,
@@ -102,46 +98,6 @@ class _BottomNavigationState extends State<BottomNavigation> {
             ),
             label: "Configurações")
       ],
-    );
-  }
-
-  appBar() {
-    return AppBar(
-      leading: Padding(
-        padding: EdgeInsets.zero,
-        child: IconButton(
-          onPressed: () => userDetail(user),
-          icon: const Icon(Icons.account_circle),
-        ),
-      ),
-      title: Padding(
-        padding: const EdgeInsets.only(right: 1),
-        child: Text(
-          user.name,
-          style: const TextStyle(fontSize: 25),
-        ),
-      ),
-      actions: [
-        Padding(
-          padding: const EdgeInsets.only(right: 50),
-          child: Text(
-            real.format(user.balance),
-            style: const TextStyle(fontSize: 20),
-          ),
-        )
-      ],
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: appBar(),
-      body: IndexedStack(
-        index: currentIndex,
-        children: screens,
-      ),
-      bottomNavigationBar: bottomNavigation(),
     );
   }
 }
