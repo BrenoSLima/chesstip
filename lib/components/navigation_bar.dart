@@ -1,44 +1,26 @@
-import 'package:chesstip/models/user.dart';
-import 'package:chesstip/repositories/user_repository.dart';
-import 'package:chesstip/screens/friends_screen.dart';
-import 'package:chesstip/screens/history_screen.dart';
-import 'package:chesstip/screens/play_screen.dart';
-import 'package:chesstip/screens/settings_screen.dart';
-import 'package:chesstip/screens/user_detail_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
-class BottomNavigation extends StatefulWidget {
-  const BottomNavigation({super.key});
+class BottomNavigation extends StatelessWidget {
 
-  @override
-  State<BottomNavigation> createState() => _BottomNavigationState();
-}
-
-class _BottomNavigationState extends State<BottomNavigation> {
-  User user = UserRepository.user;
-  NumberFormat real = NumberFormat.currency(locale: "pt_BR", name: 'R\$');
-  int currentIndex = 0;
+  BottomNavigation({this.selectedIndex, required this.onClicked});
+  final selectedIndex;
+  ValueChanged<int> onClicked;
   final double iconSize = 20;
   final double selectedFontSize = 12;
   final double unselectedFontSize = 8;
-  final screens = [
-    const PlayScreen(),
-    const HistoryScreen(),
-    const FriendsScreen(),
-    const SettingsScreen(),
-  ];
 
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      currentIndex: currentIndex,
+      currentIndex: selectedIndex,
+      onTap: onClicked,
+
       type: BottomNavigationBarType.fixed,
-      onTap: (value) => setState(() => currentIndex = value),
       selectedFontSize: selectedFontSize,
       unselectedFontSize: unselectedFontSize,
       showUnselectedLabels: false,
       selectedItemColor: Colors.green,
+
       items: [
         BottomNavigationBarItem(
             icon: SizedBox(
@@ -100,4 +82,5 @@ class _BottomNavigationState extends State<BottomNavigation> {
       ],
     );
   }
+
 }

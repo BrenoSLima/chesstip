@@ -1,4 +1,5 @@
 import 'package:chesstip/components/navigation_bar.dart';
+import 'package:chesstip/screens/home.dart';
 import 'package:chesstip/screens/play_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: PlayScreen(),
+      home: Home(),
     );
   }
 }
