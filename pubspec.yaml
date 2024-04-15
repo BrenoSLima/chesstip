@@ -92,3 +92,10 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  fonts:
+    - family: GowunDodum
+      fonts:
+        - asset: fonts/GowunDodum-Regular.ttf
+    - family: Custom_icons
+      fonts:
+        - asset: fonts/Custom_icons.ttf
