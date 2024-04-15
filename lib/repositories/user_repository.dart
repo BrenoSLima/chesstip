@@ -1,7 +1,7 @@
 import 'package:chesstip/models/user.dart';
 
 class UserRepository {
-  static User user = User(id: 1, name: "Teste", balance: 100.00);
+  static User user = User(id: 1, name: "Fabiano Caruana", balance: 100.00);
 
   static List<User> users = [
     User(id: 1, name: "Leonardo", balance: 100.00),
