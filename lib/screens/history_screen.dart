@@ -20,15 +20,13 @@ class _HistoryScreenState extends State<HistoryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Center(child: Text("Histórico de partidas")),
-      ),
       body: ListView.builder(
         itemBuilder: ((context, index) {
-          if (winMatch(matches[index]))
+          if (winMatch(matches[index])) {
             return WinHistoryComponent(match: matches[index]);
-          else
+          } else {
             return DefeatHistoryComponent(match: matches[index]);
+          }
         }),
         itemCount: matches.length,
       ),

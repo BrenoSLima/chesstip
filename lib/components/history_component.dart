@@ -43,7 +43,7 @@ class HistoryComponent extends StatelessWidget {
               width: 10,
               decoration: BoxDecoration(
                   color: cardColor,
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(5),
                       bottomLeft: Radius.circular(5))),
             ),
@@ -64,15 +64,15 @@ class HistoryComponent extends StatelessWidget {
                           ),
                           Text(
                             "vs: ${getWinnerName(match)}",
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: Colors.black38,
                             ),
                           ),
                         ],
                       ),
                     ),
-                    Text("${signal} ${real.format(match.value)}"),
-                    Text("16:19")
+                    Text("$signal ${real.format(match.value)}"),
+                    const Text("16:19")
                   ],
                 ),
               ),
