@@ -30,6 +30,7 @@ class ProfileScreen extends StatelessWidget {
                     child: Text('Senha'),
                   ),
                   TextField(
+                    obscureText: true,
                     decoration: InputDecoration(border: OutlineInputBorder()),
                   ),
                 ])),
