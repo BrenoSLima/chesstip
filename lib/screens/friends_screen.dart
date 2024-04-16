@@ -24,8 +24,11 @@ class _FriendsScreenState extends State<FriendsScreen> {
       appBar: AppBar(
           backgroundColor: Colors.white,
           shadowColor: Colors.transparent,
-          title: Center(
-            child: const Text("Amigos", style: TextStyle(color: Colors.black),),
+          title: const Center(
+            child: Text(
+              "Amigos",
+              style: TextStyle(color: Colors.black),
+            ),
           )),
       body: ListView.builder(
         itemBuilder: ((context, index) {

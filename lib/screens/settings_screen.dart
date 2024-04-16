@@ -1,13 +1,10 @@
-import 'dart:html';
-import 'dart:js';
-
 import 'package:chesstip/models/user.dart';
 import 'package:chesstip/repositories/user_repository.dart';
+import 'package:chesstip/screens/about_us.dart';
 import 'package:chesstip/screens/profile_screen.dart';
-import 'package:chesstip/screens/user_detail_screen.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:chesstip/screens/question_answer.dart';
+import 'package:chesstip/screens/send_message.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -26,74 +23,80 @@ class _SettingsScreenState extends State<SettingsScreen> {
       appBar: AppBar(
           backgroundColor: Colors.white,
           shadowColor: Colors.transparent,
-          title: Center(
-            child: const Text(
+          title: const Center(
+            child: Text(
               "Configurações",
               style: TextStyle(color: Colors.black),
             ),
           )),
       body: ListView(children: [
-        Container(
-            child: ListTile(
+        ListTile(
           shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(12))),
-          leading: SizedBox(
+          leading: const SizedBox(
             width: 40,
             child: Icon(Icons.person),
           ),
-          title: Text(
+          title: const Text(
             'Perfil',
-            style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
+            style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
           ),
-          subtitle: Text('Nome, senha...'),
+          subtitle: const Text('Alterar nome, senha...'),
           onTap: () => {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => ProfileScreen()))
           },
-        )),
-        Container(
-          child: ListTile(
-            shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(12))),
-            leading: SizedBox(
-              width: 40,
-              child: Icon(Icons.message_rounded),
-            ),
-            title: Text('Fale Conosco',
-              style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
-            ),
-            subtitle: Text('Sugestões, reclamações...'),
-            onTap: () {},
-          ),
         ),
-        Container(
-          child: ListTile(
-            shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(12))),
-            leading: SizedBox(
-              width: 40,
-              child: Icon(Icons.help),
-            ),
-            title: Text('Perguntas Frequentes',
-              style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
-            ),
-            subtitle: Text('Como depositar dinheiro? Como...'),
-            onTap: () {},
+        ListTile(
+          shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(12))),
+          leading: const SizedBox(
+            width: 40,
+            child: Icon(Icons.message_rounded),
           ),
+          title: const Text(
+            'Fale Conosco',
+            style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
+          ),
+          subtitle: const Text('Sugestões, reclamações...'),
+          onTap: () => {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const SendMessage()))
+          },
         ),
-        Container(
-          child: ListTile(
-            shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(12))),
-            leading: SizedBox(
-              width: 40,
-              child: Icon(Icons.info),
-            ),
-            title: Text('Sobre nós',
-              style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
-            ),subtitle: Text(''),
-            onTap: () {},
+        ListTile(
+          shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(12))),
+          leading: const SizedBox(
+            width: 40,
+            child: Icon(Icons.help),
           ),
+          title: const Text(
+            'Perguntas Frequentes',
+            style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
+          ),
+          subtitle: const Text('Como depositar dinheiro? Como...'),
+          onTap: () => {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => const QAs()))
+          },
+        ),
+        ListTile(
+          shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(12))),
+          leading: const SizedBox(
+            width: 40,
+            child: Icon(Icons.info),
+          ),
+          title: const Text(
+            'Sobre nós',
+            style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
+          ),
+          subtitle: const Text(''),
+          onTap: () => {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const AboutUs()))
+          },
         )
       ]),
     );
