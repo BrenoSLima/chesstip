@@ -16,7 +16,7 @@ class SignupLoginScreen extends StatelessWidget {
       body: Stack(
         children: [
           Opacity(
-            opacity: 0.75,
+            opacity: 0.90,
             child: Container(
               decoration: const BoxDecoration(
                 image: DecorationImage(
