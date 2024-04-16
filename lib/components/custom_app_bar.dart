@@ -1,3 +1,4 @@
+import 'package:chesstip/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:chesstip/repositories/user_repository.dart';
 import 'package:intl/intl.dart';
@@ -25,7 +26,10 @@ class _CustomAppBarState extends State<CustomAppBar> {
         padding: EdgeInsets.zero,
         child: IconButton(
           color: Colors.black,
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => ProfileScreen()));
+          },
           icon: const Icon(Icons.account_circle),
         ),
       ),
@@ -40,10 +44,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
             padding: const EdgeInsets.only(right: 15),
             child: Text(
               real.format(user.balance),
-              style: const TextStyle(
-                fontSize: 20,
-                color: Colors.black
-              ),
+              style: const TextStyle(fontSize: 20, color: Colors.black),
             ),
           ),
         )
