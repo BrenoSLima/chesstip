@@ -11,6 +11,8 @@ class SendMessage extends StatefulWidget {
 class _SendMessageState extends State<SendMessage> {
   final _formKey = GlobalKey<FormState>();
 
+  enviar() {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,6 +35,11 @@ class _SendMessageState extends State<SendMessage> {
                         border: OutlineInputBorder(),
                         label: Text('Email'),
                         prefixIcon: Icon(Icons.email)),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Informe um email';
+                      }
+                    },
                   ),
                   TextFormField(
                     maxLength: 25,
