@@ -5,6 +5,15 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Perfil"),
+      ),
+      body: Form(
+          child: TextField(
+        decoration:
+            InputDecoration(border: OutlineInputBorder(), hintText: 'Nome'),
+      )),
+    );
   }
 }
