@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class BackgroundFade extends StatelessWidget {
+class BackgroundFadeLogin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Opacity(

@@ -1,4 +1,7 @@
+import 'package:chesstip/screens/loading_match_screen.dart';
 import 'package:flutter/material.dart';
+
+import '../screens/match_screen.dart';
 
 const List<Widget> timers = <Widget>[
   Text('5 min'),
@@ -154,7 +157,11 @@ class _PlayComponentState extends State<PlayComponent> {
                   ),
                 ),
                 child: MaterialButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => LoadingMatchScreen()));
+                  },
                   child: const Text(
                     "Jogar",
                     style: TextStyle(color: Colors.white, fontSize: 18),
