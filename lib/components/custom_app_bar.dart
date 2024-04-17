@@ -1,3 +1,4 @@
+import 'package:chesstip/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:chesstip/repositories/user_repository.dart';
 import 'package:intl/intl.dart';

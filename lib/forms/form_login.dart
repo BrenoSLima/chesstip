@@ -54,7 +54,7 @@ class FormLogin {
                           child: Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "Nome de usuário",
+                              "Email",
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w500,
@@ -70,7 +70,7 @@ class FormLogin {
                                 BorderRadius.all(Radius.circular(30.0)),
                           ),
                           child: TextFormField(
-                            controller: username,
+                            controller: email,
                             keyboardType: TextInputType.text,
                             decoration: const InputDecoration(
                               contentPadding: EdgeInsets.symmetric(
@@ -130,10 +130,18 @@ class FormLogin {
                       firstColor: const Color(0xFF8ED782),
                       secondColor: const Color(0xFF598D50),
                       onPressed: () {
-                        Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(builder: (context) => Home()),
-                            ModalRoute.withName("/Home"));
+                        if (email.text == 'teste@teste.com' &&
+                            password.text == '123') {
+                          print(email.text);
+                          print(password.text);
+                          Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(builder: (context) => Home()),
+                              ModalRoute.withName("/Home"));
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text('Login incorreto')));
+                        }
                       },
                     ),
                   ],
@@ -149,3 +157,5 @@ class FormLogin {
     );
   }
 }
+
+void logar(String email, String password, context) {}

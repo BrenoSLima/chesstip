@@ -15,27 +15,28 @@ class ProfileScreen extends StatelessWidget {
       body: Padding(
           padding: const EdgeInsets.all(25),
           child: Column(children: [
+            const Padding(
+              padding: EdgeInsets.all(20),
+              child: Icon(
+                Icons.account_circle,
+                size: 100,
+              ),
+            ),
             Form(
                 key: formKey,
                 child: const Column(children: [
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Text('Nome'),
-                  ),
                   TextField(
-                    decoration: InputDecoration(border: OutlineInputBorder()),
-                  ),
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Text('Senha'),
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(), label: Text("Nome")),
                   ),
                   TextField(
                     obscureText: true,
-                    decoration: InputDecoration(border: OutlineInputBorder()),
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(), label: Text("Senha")),
                   ),
                 ])),
             Container(
-              margin: EdgeInsets.all(20),
+              margin: const EdgeInsets.all(20),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     backgroundColor: Color(0xff69CE45)),
