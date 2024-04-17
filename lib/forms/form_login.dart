@@ -130,18 +130,10 @@ class FormLogin {
                       firstColor: const Color(0xFF8ED782),
                       secondColor: const Color(0xFF598D50),
                       onPressed: () {
-                        if (email.text == 'teste@teste.com' &&
-                            password.text == '123') {
-                          print(email.text);
-                          print(password.text);
-                          Navigator.pushAndRemoveUntil(
-                              context,
-                              MaterialPageRoute(builder: (context) => Home()),
-                              ModalRoute.withName("/Home"));
-                        } else {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text('Login incorreto')));
-                        }
+                        Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(builder: (context) => Home()),
+                            ModalRoute.withName("/Home"));
                       },
                     ),
                   ],
