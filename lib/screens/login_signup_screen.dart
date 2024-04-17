@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../components/custom_rounded_wide_button_fade.dart';
 import '../components/custom_rounded_wide_button.dart';
 import '../components/logo_white_green.dart';
-import '../components/background_fade.dart';
+import '../components/background_fade_login.dart';
 import '../components/login_signup_title_text.dart';
 import '../forms/form_login.dart';
 import '../forms/form_signup.dart';
@@ -16,7 +16,7 @@ class SignupLoginScreen extends StatelessWidget {
       body: Stack(
         children: [
           Opacity(
-            opacity: 0.75,
+            opacity: 0.90,
             child: Container(
               decoration: const BoxDecoration(
                 image: DecorationImage(
@@ -27,7 +27,7 @@ class SignupLoginScreen extends StatelessWidget {
               ),
             ),
           ),
-          BackgroundFade(),
+          BackgroundFadeLogin(),
           SingleChildScrollView(
             child: Center(
               child: Container(

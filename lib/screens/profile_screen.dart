@@ -24,7 +24,11 @@ class ProfileScreen extends StatelessWidget {
             ),
             Form(
                 key: formKey,
-                child: const Column(children: [
+                child:  Column(children: [
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Text('Nome'),
+                  ),
                   TextField(
                     decoration: InputDecoration(
                         border: OutlineInputBorder(), label: Text("Nome")),
@@ -41,7 +45,7 @@ class ProfileScreen extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                     backgroundColor: Color(0xff69CE45)),
                 onPressed: () {},
-                child: const Row(
+                child:  Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Icon(
