@@ -5,6 +5,7 @@ import 'package:chesstip/screens/loading_match_screen.dart';
 import 'package:chesstip/screens/login_signup_screen.dart';
 import 'package:chesstip/screens/match_screen.dart';
 import 'package:chesstip/screens/play_screen.dart';
+import 'package:chesstip/screens/login_signup_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {

@@ -1,3 +1,4 @@
+import 'package:chesstip/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:chesstip/repositories/user_repository.dart';
 import 'package:intl/intl.dart';
@@ -16,6 +17,11 @@ class _CustomAppBarState extends State<CustomAppBar> {
   User user = UserRepository.user;
   NumberFormat real = NumberFormat.currency(locale: "pt_BR", name: 'R\$');
 
+  userDetail(User user) {
+    Navigator.push(context,
+        MaterialPageRoute(builder: (_) => UserDetailScreen(user: user)));
+  }
+
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -25,7 +31,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
         padding: EdgeInsets.zero,
         child: IconButton(
           color: Colors.black,
-          onPressed: () {},
+          onPressed: () => userDetail(user),
           icon: const Icon(Icons.account_circle),
         ),
       ),
@@ -40,10 +46,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
             padding: const EdgeInsets.only(right: 15),
             child: Text(
               real.format(user.balance),
-              style: const TextStyle(
-                fontSize: 20,
-                color: Colors.black
-              ),
+              style: const TextStyle(fontSize: 20, color: Colors.black),
             ),
           ),
         )

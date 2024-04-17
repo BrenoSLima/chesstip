@@ -1,16 +1,16 @@
 # chesstip
 
-A new Flutter project.
+Integrantes: Breno Lima, Leonardo Alves, Leonardo Budim.
 
-## Getting Started
+O projeto de desenvolvimento do aplicativo ChessTip tem como objetivo conectar jogadores de xadrez para realização de partidas com apostas em dinheiro.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Na parte 1 do projeto foi desenvolvido as telas:
+ - Login
+ - Cadastro
+ - Jogar
+ - Amigos
+ - Histórico
+ - Configurações
+   - Perfil
+   - Fale Conosco
+   - Sobre nós
