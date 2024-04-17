@@ -1,6 +1,10 @@
 class User {
   int id;
   String name;
+  int rating;
+  int matches;
+  int victories;
+  int defeats;
   String email;
   double balance;
   String avatar = "assets/images/default-avatar.png";
@@ -11,6 +15,10 @@ class User {
     required this.name,
     required this.email,
     required this.balance,
+    required this.rating,
+    required this.victories,
+    required this.defeats,
+    required this.matches,
     required this.senha,
   });
 }

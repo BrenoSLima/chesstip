@@ -17,6 +17,11 @@ class _CustomAppBarState extends State<CustomAppBar> {
   User user = UserRepository.user;
   NumberFormat real = NumberFormat.currency(locale: "pt_BR", name: 'R\$');
 
+  userDetail(User user) {
+    Navigator.push(context,
+        MaterialPageRoute(builder: (_) => UserDetailScreen(user: user)));
+  }
+
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -26,10 +31,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
         padding: EdgeInsets.zero,
         child: IconButton(
           color: Colors.black,
-          onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => ProfileScreen()));
-          },
+          onPressed: () => userDetail(user),
           icon: const Icon(Icons.account_circle),
         ),
       ),

@@ -1,3 +1,4 @@
+import 'package:chesstip/components/custom_app_bar.dart';
 import 'package:chesstip/models/user.dart';
 import 'package:chesstip/repositories/user_repository.dart';
 import 'package:chesstip/screens/about_us.dart';
@@ -20,15 +21,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          backgroundColor: Colors.white,
-          shadowColor: Colors.transparent,
-          title: const Center(
-            child: Text(
-              "Configurações",
-              style: TextStyle(color: Colors.black),
-            ),
-          )),
+      appBar: CustomAppBar(),
       body: ListView(children: [
         ListTile(
           shape: const RoundedRectangleBorder(
