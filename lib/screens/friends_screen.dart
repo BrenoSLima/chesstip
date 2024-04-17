@@ -1,3 +1,4 @@
+import 'package:chesstip/components/custom_app_bar.dart';
 import 'package:chesstip/models/user.dart';
 import 'package:chesstip/repositories/user_repository.dart';
 import 'package:chesstip/screens/user_detail_screen.dart';
@@ -21,15 +22,7 @@ class _FriendsScreenState extends State<FriendsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          backgroundColor: Colors.white,
-          shadowColor: Colors.transparent,
-          title: const Center(
-            child: Text(
-              "Amigos",
-              style: TextStyle(color: Colors.black),
-            ),
-          )),
+      appBar: CustomAppBar(),
       body: ListView.builder(
         itemBuilder: ((context, index) {
           return ListTile(
