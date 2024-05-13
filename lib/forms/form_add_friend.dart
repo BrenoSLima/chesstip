@@ -112,7 +112,7 @@ class FormAddFriend {
                           onPressed: () {
                             final friends = Provider.of<FriendsRepository>(context, listen: false);
                             friends.add(User(
-                                id: 1,
+                                id: "1",
                                 name: username.text,
                                 balance: 100,
                                 victories: 550,

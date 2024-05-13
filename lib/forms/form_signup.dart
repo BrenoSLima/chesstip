@@ -1,9 +1,12 @@
+import 'package:chesstip/database/db_firestore.dart';
+import 'package:chesstip/repositories/user_repository.dart';
 import 'package:flutter/material.dart';
 import '../components/buttons/custom_rounded_wide_button_fade.dart';
 import '../screens/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../auth/auth.dart';
 import 'package:email_validator/email_validator.dart';
+import 'package:chesstip/database/db_firestore.dart';
 
 class FormSignup extends StatefulWidget {
   const FormSignup({super.key});
@@ -24,13 +27,27 @@ class _FormSignupState extends State<FormSignup> {
   String? error_message = '';
   bool is_login = true;
 
-  Future<void> create_user_with_email_and_password() async {
+  Future<void> create_user_with_email_and_password(String username) async {
     try {
       await Auth().createUserWithEmailAndPassword(
         email: email.text,
         password: password.text,
       );
+
+      final db = DBFirestore.get();
+
+      db.collection("users").doc(Auth().currentUser!.uid).set({
+        'username': username
+      });
+      
+      UserRepository().update(
+        username,
+        Auth().currentUser?.email,
+        Auth().currentUser!.uid,
+      );
+
       Navigator.pop(context);
+
     } on FirebaseAuthException catch (e) {
       error_message = e.message;
       ScaffoldMessenger.of(context).showSnackBar(
@@ -191,7 +208,7 @@ class _FormSignupState extends State<FormSignup> {
                     bool_shadow: true,
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        create_user_with_email_and_password();
+                        create_user_with_email_and_password(username.text);
                       }
                     },
                   ),

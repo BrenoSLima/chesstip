@@ -6,7 +6,7 @@ class UsersRepository extends ChangeNotifier {
 
   static final List<User> _list = [
     User(
-        id: 1,
+        id: "1",
         name: "Leonardo",
         balance: 100.00,
         victories: 1,
@@ -16,7 +16,7 @@ class UsersRepository extends ChangeNotifier {
         email: "test@test.com",
         senha: "1234"),
     User(
-        id: 2,
+        id: "2",
         name: "Luis",
         balance: 100.00,
         victories: 1,
@@ -26,7 +26,7 @@ class UsersRepository extends ChangeNotifier {
         email: "test@test.com",
         senha: "1234"),
     User(
-        id: 3,
+        id: "3",
         name: "Mauro",
         balance: 100.00,
         victories: 1,

@@ -4,8 +4,8 @@ import 'dart:collection';
 
 class UserRepository extends ChangeNotifier {
   static final User _user = User(
-      id: 1,
-      name: "Fabiano Caruana",
+      id: "1",
+      name: "",
       balance: 100,
       victories: 550,
       matches: 567,
@@ -22,6 +22,14 @@ class UserRepository extends ChangeNotifier {
 
     if (value > 0) user.victories = user.victories + 1;
     else user.defeats = user.defeats + 1;
+
+    notifyListeners();
+  }
+
+  update(String? username, String? email, String uid){
+    user.name = username!;
+    user.email = email!;
+    user.id = uid;
 
     notifyListeners();
   }

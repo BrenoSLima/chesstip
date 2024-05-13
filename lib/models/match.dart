@@ -5,7 +5,7 @@ enum MatchStatusEnum { onGoing, finished, notStarted }
 class Match {
   User whitePlayer;
   User blackPlayer;
-  int? winnerId;
+  String? winnerId;
   double value;
   MatchStatusEnum status = MatchStatusEnum.notStarted;
 

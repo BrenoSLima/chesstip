@@ -1,3 +1,4 @@
+import 'package:chesstip/auth/widget_tree.dart';
 import 'package:chesstip/components/custom_app_bar.dart';
 import 'package:chesstip/models/user.dart';
 import 'package:chesstip/repositories/user_repository.dart';
@@ -7,6 +8,8 @@ import 'package:chesstip/screens/question_answer.dart';
 import 'package:chesstip/screens/send_message.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../auth/auth.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -89,12 +92,30 @@ class _SettingsScreenState extends State<SettingsScreen> {
             'Sobre nós',
             style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
           ),
-          subtitle: const Text(''),
           onTap: () => {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const AboutUs()))
           },
+        ),
+        ListTile(
+          shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(12))),
+          leading: const SizedBox(
+            width: 40,
+            child: Icon(Icons.logout),
+          ),
+          title: const Text(
+            'Sair',
+            style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
+          ),
+          onTap: () => {
+
+            Auth().signOut(),
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const WidgetTree()))
+          },
         )
+
       ]),
     );
   }

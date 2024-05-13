@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../components/buttons/custom_rounded_wide_button_fade.dart';
+import '../database/db_firestore.dart';
+import '../repositories/user_repository.dart';
 import '../screens/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../auth/auth.dart';
@@ -32,6 +34,17 @@ class _FormLoginState extends State<FormLogin> {
         email: email.text,
         password: password.text,
       );
+
+      final db = DBFirestore.get();
+
+      final user_info = await db.collection("users").doc(Auth().currentUser!.uid).get();
+
+      UserRepository().update(
+        user_info["username"],
+        Auth().currentUser?.email,
+        Auth().currentUser!.uid,
+      );
+
       Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
       error_message = e.message;
