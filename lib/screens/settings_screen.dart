@@ -6,6 +6,7 @@ import 'package:chesstip/screens/profile_screen.dart';
 import 'package:chesstip/screens/question_answer.dart';
 import 'package:chesstip/screens/send_message.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -15,11 +16,14 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  User user = UserRepository.user;
+
+  late User user;
   List screens = ['Perfil', 'Fale Conosco'];
 
   @override
   Widget build(BuildContext context) {
+    user = Provider.of<UserRepository>(context, listen: false).user;
+
     return Scaffold(
       appBar: CustomAppBar(),
       body: ListView(children: [

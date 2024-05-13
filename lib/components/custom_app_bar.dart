@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:chesstip/repositories/user_repository.dart';
 import 'package:intl/intl.dart';
 import 'package:chesstip/screens/user_detail_screen.dart';
+import 'package:provider/provider.dart';
 import '../models/user.dart';
 
 class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
@@ -14,7 +15,7 @@ class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _CustomAppBarState extends State<CustomAppBar> {
-  User user = UserRepository.user;
+  late User user;
   NumberFormat real = NumberFormat.currency(locale: "pt_BR", name: 'R\$');
 
   userDetail(User user) {
@@ -24,6 +25,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
 
   @override
   Widget build(BuildContext context) {
+    user = Provider.of<UserRepository>(context, listen: false).user;
     return AppBar(
       backgroundColor: Colors.white,
       shadowColor: Colors.black,

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import '../components/custom_rounded_wide_button_fade.dart';
+import '../components/buttons/custom_rounded_wide_button_fade.dart';
 import '../screens/home.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import '../auth/auth.dart';
 
 class FormSignup {
   static void show(BuildContext context, Function() onSubmit) {
@@ -10,6 +12,26 @@ class FormSignup {
     TextEditingController password = TextEditingController();
     TextEditingController email = TextEditingController();
     TextEditingController companyKey = TextEditingController();
+
+    String? error_message = '';
+    bool is_login = true;
+
+    Future<void>create_user_with_email_and_password() async {
+      try {
+        await Auth().createUserWithEmailAndPassword(
+          email: email.text,
+          password: password.text,
+        );
+      } on FirebaseAuthException catch (e) {
+        error_message = e.message;
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(error_message!),
+            duration: Duration(seconds: 2), // SnackBar display duration
+          ),
+        );
+      }
+    }
 
     showModalBottomSheet(
       context: context,
@@ -160,8 +182,11 @@ class FormSignup {
                       text: 'Cadastrar',
                       firstColor: const Color(0xFF8ED782),
                       secondColor: const Color(0xFF598D50),
+                      width: 328,
+                      height: 47,
+                      bool_shadow: true,
                       onPressed: () {
-                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) =>  Home()), ModalRoute.withName("/Home"));
+                        create_user_with_email_and_password();
                       },
                     ),
                   ],

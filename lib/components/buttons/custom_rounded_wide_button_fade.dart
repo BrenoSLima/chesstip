@@ -5,19 +5,25 @@ class CustomRoundedWideButtonFade extends StatelessWidget {
   final Color firstColor;
   final Color secondColor;
   final VoidCallback onPressed;
+  final double width;
+  final double height;
+  final bool bool_shadow;
 
   CustomRoundedWideButtonFade({
     required this.text,
     required this.firstColor,
     required this.secondColor,
     required this.onPressed,
+    required this.width,
+    required this.height,
+    required this.bool_shadow,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 328,
-      height: 47,
+      width: width,
+      height: height,
       clipBehavior: Clip.antiAlias,
       decoration: ShapeDecoration(
         gradient: LinearGradient(
@@ -28,7 +34,8 @@ class CustomRoundedWideButtonFade extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(100),
         ),
-        shadows: const [
+        shadows: [
+          if (bool_shadow)
           BoxShadow(
             color: Color(0x30000000),
             blurRadius: 4,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:chesstip/components/avatar_placeholder.dart';
-import 'package:chesstip/components/background_fade_match.dart';
-import 'package:chesstip/components/win_loose_alert_dialog.dart';
+import 'package:chesstip/components/placeholders/avatar_placeholder.dart';
+import 'package:chesstip/components/visuals/background_fade_match.dart';
+import 'package:chesstip/components/alert_dialogs/win_loose_alert_dialog.dart';
 
 class MatchScreen extends StatefulWidget {
   const MatchScreen({Key? key}) : super(key: key);
@@ -13,9 +13,8 @@ class MatchScreen extends StatefulWidget {
 class _MatchScreenState extends State<MatchScreen> {
   @override
   void initState() {
-    super.initState();
     // After 5 seconds, navigate to the next page
-    Future.delayed(Duration(seconds: 5), () {
+    Future.delayed(const Duration(seconds: 5), () {
       showDialog(
         context: context,
         builder: (_) => WinLooseAlertDialog(),
@@ -38,9 +37,9 @@ class _MatchScreenState extends State<MatchScreen> {
                     alignment: Alignment.centerLeft,
                     child: Container(
                       width: 190,
-                      child: Row(
+                      child: const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: const [
+                        children: [
                           AvatarPlaceholder(width: 80, height: 80),
                           Text(
                             "Player 1",
@@ -58,9 +57,9 @@ class _MatchScreenState extends State<MatchScreen> {
                     alignment: Alignment.centerRight,
                     child: Container(
                       width: 190,
-                      child: Row(
+                      child: const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: const [
+                        children: [
                           Text(
                             "Player 2",
                             style: TextStyle(

@@ -1,28 +1,19 @@
+import 'package:flutter/material.dart';
+import 'package:chesstip/repositories/users_repository.dart';
 import 'package:chesstip/models/match.dart';
-import 'package:chesstip/repositories/user_repository.dart';
+import 'dart:collection';
 
-class MatchRepository {
-  static List<Match> matches = [
-    Match(
-      whitePlayer: UserRepository.users[0],
-      blackPlayer: UserRepository.users[1],
-      winnerId: UserRepository.users[0].id,
-      value: 5.00,
-      status: MatchStatusEnum.finished,
-    ),
-    Match(
-      whitePlayer: UserRepository.users[1],
-      blackPlayer: UserRepository.users[2],
-      winnerId: UserRepository.users[1].id,
-      value: 5.00,
-      status: MatchStatusEnum.finished,
-    ),
-    Match(
-      whitePlayer: UserRepository.users[1],
-      blackPlayer: UserRepository.users[0],
-      winnerId: UserRepository.users[0].id,
-      value: 5.00,
-      status: MatchStatusEnum.finished,
-    )
-  ];
+class MatchRepository extends ChangeNotifier {
+  UnmodifiableListView<Match> get list => UnmodifiableListView(_list);
+
+  static final List<Match> _list = [];
+
+  add(Match match) {
+    _list.add(match);
+    notifyListeners();
+  }
+
+  get_last() {
+    return list.last;
+  }
 }

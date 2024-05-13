@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../components/custom_app_bar.dart';
-import '../components/play_component.dart';
+import '../components/play_match.dart';
 
 class PlayScreen extends StatefulWidget {
   const PlayScreen({Key? key}) : super(key: key);

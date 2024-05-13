@@ -1,6 +1,11 @@
 import 'package:chesstip/screens/loading_match_screen.dart';
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
+import 'package:chesstip/models/match.dart';
+import '../repositories/match_repository.dart';
+import '../repositories/user_repository.dart';
+import '../repositories/users_repository.dart';
+import "dart:math";
 import '../screens/match_screen.dart';
 
 const List<Widget> timers = <Widget>[
@@ -13,6 +18,12 @@ const List<Widget> money = <Widget>[
   Text('5 R\$'),
   Text('10 R\$'),
   Text('15 R\$')
+];
+
+const double_money = <double>[
+  5.00,
+  10.00,
+  15.00,
 ];
 
 class PlayComponent extends StatefulWidget {
@@ -75,9 +86,7 @@ class _PlayComponentState extends State<PlayComponent> {
                             child: Text(
                               "Tempo",
                               style: TextStyle(
-                                fontSize: 13,
-                                color: Colors.black54
-                              ),
+                                  fontSize: 13, color: Colors.black54),
                             ),
                           ),
                           ToggleButtons(
@@ -112,9 +121,7 @@ class _PlayComponentState extends State<PlayComponent> {
                             child: Text(
                               "Valor",
                               style: TextStyle(
-                                  fontSize: 13,
-                                  color: Colors.black54
-                              ),
+                                  fontSize: 13, color: Colors.black54),
                             ),
                           ),
                           ToggleButtons(
@@ -122,7 +129,9 @@ class _PlayComponentState extends State<PlayComponent> {
                             onPressed: (int index) {
                               setState(() {
                                 // The button that is tapped is set to true, and the others to false.
-                                for (int i = 0; i < _selectedMoney.length; i++) {
+                                for (int i = 0;
+                                    i < _selectedMoney.length;
+                                    i++) {
                                   _selectedMoney[i] = i == index;
                                 }
                               });
@@ -158,9 +167,17 @@ class _PlayComponentState extends State<PlayComponent> {
                 ),
                 child: MaterialButton(
                   onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => LoadingMatchScreen()));
+
+                    final value = double_money[_selectedMoney.indexOf(true)];
+
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => LoadingMatchScreen(value),
+                      ),
+                          (route) => false, // RoutePredicate to always return false, which stops removing routes immediately
+                    );
+
                   },
                   child: const Text(
                     "Jogar",

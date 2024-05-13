@@ -4,12 +4,11 @@ import 'package:chesstip/screens/play_screen.dart';
 import 'package:chesstip/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
 import '../components/custom_app_bar.dart';
-import '../components/navigation_bar.dart';
+import '../components/custom_navigation_bar.dart';
 import 'friends_screen.dart';
 import 'history_screen.dart';
 
 class Home extends StatefulWidget {
-  User user = UserRepository.user;
   Home({Key? key}) : super(key: key);
 
   @override
@@ -20,9 +19,7 @@ class _HomeState extends State<Home> {
   int selectedIndex = 0;
   late List screens = [
     PlayScreen(),
-    HistoryScreen(
-      user: widget.user,
-    ),
+    HistoryScreen(),
     FriendsScreen(),
     SettingsScreen(),
   ];

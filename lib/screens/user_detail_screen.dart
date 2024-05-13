@@ -1,4 +1,4 @@
-import 'package:chesstip/components/list_history_component.dart';
+import 'package:chesstip/components/history_components/list_history_component.dart';
 import 'package:chesstip/models/user.dart';
 import 'package:chesstip/repositories/match_repository.dart';
 import 'package:flutter/material.dart';

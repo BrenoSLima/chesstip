@@ -20,7 +20,7 @@ class AvatarPlaceholder extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: Colors.black12,
-            spreadRadius: 8,
+            spreadRadius: 4,
             blurRadius: 3,
             offset: const Offset(
               2, 2,

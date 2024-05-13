@@ -1,7 +1,9 @@
 import 'package:chesstip/screens/loading_match_screen.dart';
 import 'package:chesstip/screens/match_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../repositories/match_repository.dart';
 import '../screens/home.dart';
 
 class WinLooseAlertDialog extends StatefulWidget {
@@ -61,7 +63,7 @@ class WinLooseAlertDialogState extends State<WinLooseAlertDialog>
                     SizedBox(height: 10,),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [                        OutlinedButton(
+                      children: [ OutlinedButton(
                         child: Text("Sair"),
                         style: OutlinedButton.styleFrom(
                           side: BorderSide(
@@ -83,9 +85,17 @@ class WinLooseAlertDialogState extends State<WinLooseAlertDialog>
                             elevation: 0,
                           ),
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => LoadingMatchScreen()));
+                            final matches = Provider.of<MatchRepository>(context, listen: false);
+                            final value = matches.list.last.value;
+
+                            Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => LoadingMatchScreen(value),
+                              ),
+                                  (
+                                  route) => false, // RoutePredicate to always return false, which stops removing routes immediately
+                            );
                           },
                         )
                       ],
