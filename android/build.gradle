@@ -1,17 +1,10 @@
-buildscript {
-    ext.kotlin_version = '1.9.24'
-    repositories {
-        google()
-        mavenCentral()
-    }
-
-}
 
 plugins {
     id 'com.google.gms.google-services' version '4.4.1' apply false
 }
 
 allprojects {
+    ext.kotlin_version = '1.9.24'
     repositories {
         google()
         mavenCentral()
@@ -19,9 +12,10 @@ allprojects {
 }
 
 rootProject.buildDir = '../build'
-
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+subprojects {
     project.evaluationDependsOn(':app')
 }
 

@@ -28,11 +28,9 @@ class WinLooseAlertDialogState extends State<WinLooseAlertDialog>
     if (isVictory && current_match.status == MatchStatusEnum.onGoing){
       current_match.winnerId = UserRepository().user.id;
       UserRepository().match_rasult_update_user_info(current_match.value);
-      print("rodei");
     } else if (!isVictory && current_match.status == MatchStatusEnum.onGoing){
       current_match.winnerId = current_match.blackPlayer.id;
       UserRepository().match_rasult_update_user_info(-current_match.value);
-      print("rodei");
     }
 
     current_match.status = MatchStatusEnum.finished;

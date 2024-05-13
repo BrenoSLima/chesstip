@@ -51,7 +51,10 @@ class SignupLoginScreen extends StatelessWidget {
                             height: 47,
                             bool_shadow: true,
                             onPressed: () {
-                              FormLogin.show(context, () {});
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => FormLogin()),
+                              );
                             },
                           ),
                           Padding(
@@ -60,7 +63,11 @@ class SignupLoginScreen extends StatelessWidget {
                               text: 'Cadastrar',
                               color: const Color(0x3F000000),
                               onPressed: () {
-                                FormSignup.show(context, () {});
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => FormSignup()),
+                                );
+
                               },
                             ),
                           ),
