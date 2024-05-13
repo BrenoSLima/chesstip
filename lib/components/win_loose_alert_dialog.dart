@@ -64,7 +64,6 @@ class WinLooseAlertDialogState extends State<WinLooseAlertDialog>
                       children: [                        OutlinedButton(
                         child: Text("Sair"),
                         style: OutlinedButton.styleFrom(
-                          primary: Colors.green,
                           side: BorderSide(
                             color: Colors.green,
                           ),
@@ -81,7 +80,6 @@ class WinLooseAlertDialogState extends State<WinLooseAlertDialog>
                         ElevatedButton(
                           child: Text("Jogar novamente"),
                           style: ElevatedButton.styleFrom(
-                            primary: Colors.green,
                             elevation: 0,
                           ),
                           onPressed: () {
