@@ -34,17 +34,7 @@ class _FormSignupState extends State<FormSignup> {
         password: password.text,
       );
 
-      final db = DBFirestore.get();
-
-      db.collection("users").doc(Auth().currentUser!.uid).set({
-        'username': username
-      });
-      
-      UserRepository().update(
-        username,
-        Auth().currentUser?.email,
-        Auth().currentUser!.uid,
-      );
+      DBFirestore.create_new_user(username);
 
       Navigator.pop(context);
 

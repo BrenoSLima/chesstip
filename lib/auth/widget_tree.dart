@@ -1,3 +1,5 @@
+import 'package:chesstip/database/db_firestore.dart';
+
 import '../auth/auth.dart';
 import 'package:chesstip/screens/home.dart';
 import 'package:chesstip/forms/form_login.dart';

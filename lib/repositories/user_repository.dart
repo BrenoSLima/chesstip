@@ -17,6 +17,9 @@ class UserRepository extends ChangeNotifier {
   User get user => _user;
 
   match_rasult_update_user_info(value){
+
+
+
     user.balance = user.balance + value;
     user.matches = user.matches + 1;
 
@@ -26,11 +29,21 @@ class UserRepository extends ChangeNotifier {
     notifyListeners();
   }
 
-  update(String? username, String? email, String uid){
-    user.name = username!;
+  update(String username, String? email, String uid, double balance, int matches, int victories, int defeats, int rating){
+    user.name = username;
     user.email = email!;
     user.id = uid;
+    user.balance = balance.toDouble();
+    user.matches = matches;
+    user.victories = victories;
+    user.defeats = defeats;
+    user.rating = rating;
 
     notifyListeners();
   }
+
+  notify_listener(){
+    notifyListeners();
+  }
+
 }

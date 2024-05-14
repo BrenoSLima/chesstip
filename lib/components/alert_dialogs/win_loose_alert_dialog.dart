@@ -4,6 +4,7 @@ import 'package:chesstip/screens/match_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'dart:math';
+import '../../database/db_firestore.dart';
 import '../../repositories/match_repository.dart';
 import '../../repositories/user_repository.dart';
 import '../../repositories/users_repository.dart';
@@ -23,16 +24,21 @@ class WinLooseAlertDialogState extends State<WinLooseAlertDialog>
 
     final matches = Provider.of<MatchRepository>(context);
     final current_match = matches.list.last;
+    final db = DBFirestore.get();
+
     bool isVictory = Random().nextBool();
 
     if (isVictory && current_match.status == MatchStatusEnum.onGoing){
       current_match.winnerId = UserRepository().user.id;
       UserRepository().match_rasult_update_user_info(current_match.value);
+
     } else if (!isVictory && current_match.status == MatchStatusEnum.onGoing){
       current_match.winnerId = current_match.blackPlayer.id;
       UserRepository().match_rasult_update_user_info(-current_match.value);
     }
 
+    DBFirestore.send_match_result(current_match);
+    DBFirestore.update_user_balance(UserRepository().user.balance);
     current_match.status = MatchStatusEnum.finished;
 
     return Center(

@@ -50,7 +50,7 @@ class UserDetailScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Align(
-                  alignment: Alignment.centerLeft,
+                  alignment: Alignment.center,
                   child: Column(
                     children: [Text("Partidas")],
                   ),

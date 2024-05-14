@@ -35,15 +35,7 @@ class _FormLoginState extends State<FormLogin> {
         password: password.text,
       );
 
-      final db = DBFirestore.get();
-
-      final user_info = await db.collection("users").doc(Auth().currentUser!.uid).get();
-
-      UserRepository().update(
-        user_info["username"],
-        Auth().currentUser?.email,
-        Auth().currentUser!.uid,
-      );
+      DBFirestore.load_user_from_id();
 
       Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
