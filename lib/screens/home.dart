@@ -5,6 +5,7 @@ import 'package:chesstip/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
 import '../components/custom_app_bar.dart';
 import '../components/custom_navigation_bar.dart';
+import '../database/db_firestore.dart';
 import 'friends_screen.dart';
 import 'history_screen.dart';
 
@@ -32,6 +33,8 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    DBFirestore.load_user_from_id();
+    UserRepository().notifyListeners();
     return Scaffold(
       body: screens.elementAt(selectedIndex),
       bottomNavigationBar: BottomNavigation(
